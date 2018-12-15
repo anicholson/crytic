@@ -3,7 +3,7 @@ require "./fake_reporter"
 require "./fake_generator"
 require "./spec_helper"
 
-describe Crytic::Runner do
+describe Crytic::SequentialRunner do
   describe "#run" do
     it "raises for empty specs" do
       expect_raises(ArgumentError) do
@@ -22,7 +22,7 @@ describe Crytic::Runner do
 
     it "takes comma separated list of subjects" do
       reporter = FakeReporter.new
-      runner = Crytic::Runner.new(
+      runner = Crytic::SequentialRunner.new(
         threshold: 100.0,
         generator: FakeGenerator.new,
         reporters: [reporter] of Crytic::Reporter::Reporter)
@@ -34,7 +34,7 @@ describe Crytic::Runner do
 
     it "reports events in order" do
       reporter = FakeReporter.new
-      runner = Crytic::Runner.new(
+      runner = Crytic::SequentialRunner.new(
         threshold: 100.0,
         generator: FakeGenerator.new,
         reporters: [reporter] of Crytic::Reporter::Reporter)
@@ -47,7 +47,7 @@ describe Crytic::Runner do
 end
 
 private def runner
-  Crytic::Runner.new(
+  Crytic::SequentialRunner.new(
     threshold: 100.0,
     reporters: [Crytic::Reporter::IoReporter.new(IO::Memory.new)] of Crytic::Reporter::Reporter,
     generator: FakeGenerator.new)
