@@ -2,6 +2,7 @@ require "./crytic/generator/in_memory_generator"
 require "./crytic/reporter/http_client"
 require "./crytic/reporter/io_reporter"
 require "./crytic/reporter/stryker_badge_reporter"
+require "./crytic/parallel_runner"
 require "./crytic/runner"
 require "option_parser"
 
@@ -48,7 +49,7 @@ if spec_files.empty?
   spec_files = Dir["./spec/**/*_spec.cr"]
 end
 
-success = Crytic::Runner
+success = Crytic::ParallelRunner
   .new(msi_threshold, reporters, Crytic::InMemoryMutationsGenerator.new)
   .run(subject_source, spec_files)
 

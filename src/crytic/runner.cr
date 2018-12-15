@@ -6,7 +6,7 @@ require "./source"
 require "./runner_argument_validator"
 
 module Crytic
-  class Runner
+  class SequentialRunner
     include RunnerArgumentValidator
 
     alias Threshold = Float64
