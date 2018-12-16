@@ -1,9 +1,9 @@
-require "./generator/**"
-require "./msi_calculator"
-require "./mutation/no_mutation"
-require "./reporter/**"
-require "./source"
-require "./runner_argument_validator"
+require "../generator/**"
+require "../msi_calculator"
+require "../mutation/no_mutation"
+require "../reporter/**"
+require "../source"
+require "../runner_argument_validator"
 
 module Crytic
   class SequentialRunner

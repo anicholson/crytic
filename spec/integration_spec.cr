@@ -1,7 +1,6 @@
-require "../src/crytic/runner"
 require "./spec_helper"
 
-describe Crytic do
+describe "Crytic" do
   describe "with a fully covered subject" do
     it "passes the mutation specs" do
       result = run_crytic("-s ./fixtures/conditionals/fully_covered.cr ./fixtures/conditionals/fully_covered_spec.cr")
